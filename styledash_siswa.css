@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: min-height 100vh;
+    /* Background abstrak liquid smooth lembut di belakang */
+    background-color: #eef2f7;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 60, 114, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(225, 29, 72, 0.03) 0px, transparent 50%);
+    color: #1e293b;
+    overflow-x: hidden;
+}
+
+/* --- Header Banner dengan Efek Cairan Mendalam --- */
+.header-banner {
+    position: relative;
+    background: linear-gradient(135deg, #132c58 0%, #1e3c72 50%, #2a5298 100%);
+    color: #fff;
+    padding: 60px 20px 110px 20px;
+    text-align: center;
+}
+
+.header-banner h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.header-banner p {
+    font-size: 14px;
+    opacity: 0.85;
+    font-weight: 300;
+}
+
+/* Container utama Wave */
+.liquid-waves {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    display: block;
+}
+
+/* Animasi Pergerakan Cairan Organik */
+.wave-layer {
+    animation: move-wave 20s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.wave-layer1 { fill: rgba(238, 242, 247, 0.25); animation-delay: -2s; animation-duration: 14s; }
+.wave-layer2 { fill: rgba(238, 242, 247, 0.4); animation-delay: -4s; animation-duration: 9s; }
+.wave-layer3 { fill: #eef2f7; } /* Menutup mulus dengan background body */
+
+@keyframes move-wave {
+    0% { transform: translateX(0) translateZ(0) scaleY(1); }
+    50% { transform: translateX(-25%) translateZ(0) scaleY(0.85); }
+    100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+/* --- Layout Konten --- */
+.container {
+    max-width: 520px;
+    margin: -60px auto 50px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- EFEK KACA Kaca (Glassmorphism Card) --- */
+.card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.03),
+        0 1px 3px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(30, 60, 114, 0.06);
+}
+
+/* Grid Info Dalam Kaca */
+.card-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+    text-align: center;
+}
+
+.info-box span {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e3c72;
+    margin-top: 6px;
+}
+
+/* --- Tombol Modern & Halus --- */
+.btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    color: white;
+}
+
+.btn-primary { 
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); 
+    box-shadow: 0 4px 15px rgba(30, 60, 114, 0.25);
+}
+.btn-primary:hover { 
+    background: linear-gradient(135deg, #1e3c72 0%, #132c58 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 60, 114, 0.35);
+}
+
+.btn-danger { 
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%); 
+    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.25);
+}
+.btn-danger:hover { 
+    background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(225, 29, 72, 0.35);
+}
+
+.btn:disabled {
+    background: #cbd5e1 !important;
+    color: #94a3b8 !important;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* --- Notifikasi / Pesan Melayang --- */
+.message {
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+.message-success { background: rgba(220, 252, 231, 0.8); color: #15803d; border: 1px solid rgba(187, 247, 208, 0.6); }
+.message-error { background: rgba(254, 226, 226, 0.8); color: #b91c1c; border: 1px solid rgba(254, 202, 202, 0.6); }
+
+/* --- Tabel Riwayat Mengapung --- */
+.status-table {
+    width: 100%;
+}
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 15px;
+}
+.status-row:last-child { border-bottom: none; }
+.status-label { color: #64748b; font-weight: 500; }
+.status-value { font-weight: 600; color: #1e293b; background: rgba(0,0,0,0.03); padding: 4px 12px; border-radius: 20px; font-size: 14px;}
+
+.logout-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.logout-link:hover { color: #e11d48; }

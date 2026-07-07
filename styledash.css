@@ -1,0 +1,84 @@
+:root{
+    --bg-start: #0f172a;
+    --bg-end: #0b2545;
+    --card-bg: rgba(255,255,255,0.03);
+    --muted: rgba(255,255,255,0.75);
+    --text: #e6eef8;
+    --accent: #4facfe;
+    --success: #22c55e;
+    --danger: #ef4444;
+}
+
+html[data-theme='light']{
+    --bg-start: #e6eef8;
+    --bg-end: #f7f9fb;
+    --card-bg: rgba(255,255,255,0.95);
+    --muted: rgba(31,41,55,0.7);
+    --text: #10203a;
+    --accent: #4facfe;
+    --success: #16a34a;
+    --danger: #dc2626;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(135deg,var(--bg-start),var(--bg-end));color:var(--text)}
+
+/* Liquid background */
+.liquid-bg{position:fixed;left:0;right:0;bottom:-20px;height:260px;pointer-events:none;z-index:-1;opacity:0.85}
+.liquid-bg svg{width:100%;height:100%;display:block}
+
+/* ensure page can always scroll when content overflows */
+html,body{overflow-y:auto !important;min-height:100%}
+
+/* subtle wave animation for liquid SVG */
+@keyframes waveX{0%{transform:translateX(0) translateY(0)}50%{transform:translateX(18px) translateY(-6px)}100%{transform:translateX(0) translateY(0)}}
+@keyframes waveXSlow{0%{transform:translateX(0) translateY(0)}50%{transform:translateX(-22px) translateY(-8px)}100%{transform:translateX(0) translateY(0)}}
+.liquid-bg svg path{transform-origin:center;animation:waveX 10s ease-in-out infinite}
+.liquid-bg svg path:nth-child(2){animation:waveXSlow 14s ease-in-out infinite}
+.navbar{position:relative;z-index:10;background:transparent;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+.navbar .title{font-size:20px;font-weight:700;letter-spacing:0.2px}
+.navbar-user{display:flex;gap:12px;align-items:center}
+.logout-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:8px 12px;border-radius:8px;color:var(--text);text-decoration:none}
+
+.container{max-width:980px;margin:28px auto;padding:0 16px;position:relative;z-index:10}
+.card{background:var(--card-bg);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.4);margin-bottom:16px;color:var(--text)}
+
+.welcome-card{display:flex;flex-direction:column;gap:8px}
+.info-grid{display:flex;gap:12px}
+.info-item label{display:block;font-weight:600;color:var(--muted);font-size:0.9rem}
+.info-item p{margin:6px 0 0;font-size:1rem}
+
+.absensi-card{display:flex;flex-direction:column;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn .btn-icon{font-size:1.1rem}
+.btn-success{background:linear-gradient(90deg,#34d399,#10b981);color:#07201a}
+.btn-secondary{background:linear-gradient(90deg,#fb7185,#ef4444);color:#fff}
+.btn-warning{background:linear-gradient(90deg,#f59e0b,#f97316);color:#111}
+.btn-primary{background:linear-gradient(90deg,#60a5fa,#3b82f6);color:#fff}
+
+.message{padding:12px;border-radius:10px;margin-bottom:12px}
+.message-success{background:rgba(16,185,129,0.12);color:var(--success)}
+.message-error{background:rgba(239,68,68,0.08);color:var(--danger)}
+
+.absensi-table{width:100%;border-collapse:collapse;margin-top:8px}
+.absensi-table th{background:transparent;padding:10px;text-align:left;color:var(--muted);font-weight:700;border-bottom:1px solid rgba(255,255,255,0.06)}
+.absensi-table td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.absensi-table tr:hover{background:rgba(255,255,255,0.02)}
+
+/* modal for izin */
+#izin-modal{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);z-index:1000}
+#izin-modal .modal-box{background:var(--card-bg);padding:18px;border-radius:12px;max-width:520px;color:var(--text);box-shadow:0 12px 50px rgba(2,6,23,0.6)}
+#izin-modal label{display:block;margin-bottom:6px;color:var(--muted)}
+#izin-modal textarea{width:100%;min-height:100px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)}
+
+@media (max-width:780px){.info-grid{flex-direction:column}.navbar{padding:12px}.container{margin:16px 12px}}
+
+/* subtle floating animation */
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.welcome-card, .absensi-card{animation:floatY 6s ease-in-out infinite}
+
+/* make forms and links accessible */
+.btn:focus{outline:3px solid rgba(99,102,241,0.18)}
+
+/* small helper */
+.small-muted{font-size:0.9rem;color:var(--muted)}
